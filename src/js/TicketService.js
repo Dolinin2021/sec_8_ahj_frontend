@@ -4,7 +4,7 @@
  * */
 export default class TicketService {
   async list() {
-    let url = 'http://localhost:7070?method=allTickets';
+    let url = "http://localhost:7070?method=allTickets";
     let response = await fetch(url);
     if (response.ok) {
       let tickets = response.json();
@@ -17,7 +17,7 @@ export default class TicketService {
   async get(id) {
     let url = `http://localhost:7070?method=ticketById&id=${id}`;
     let response = await fetch(url);
-    if (response.ok) {    
+    if (response.ok) {
       let tickets = await response.json();
       return tickets;
     } else {
@@ -28,22 +28,22 @@ export default class TicketService {
   async create(data) {
     let url = `http://localhost:7070?method=createTicket&${data}`;
     let response = await fetch(url, {
-      method: 'POST',
+      method: "POST",
     });
-    if (response.ok) {   
+    if (response.ok) {
       let result = await response.json();
       return result;
     } else {
       console.log("Ошибка HTTP: " + response.status);
     }
-  };
+  }
 
   async update(data) {
     let url = `http://localhost:7070?method=updateById&${data}`;
     let response = await fetch(url, {
-      method: 'PATCH',
+      method: "PATCH",
     });
-    if (response.ok) {  
+    if (response.ok) {
       let result = await response.json();
       return result;
     } else {
@@ -55,7 +55,7 @@ export default class TicketService {
     let url = `http://localhost:7070?method=deleteById&${id}`;
     console.log(url);
     let response = await fetch(url, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     return response;
   }

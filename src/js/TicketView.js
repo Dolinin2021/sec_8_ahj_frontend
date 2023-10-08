@@ -11,9 +11,8 @@ export default class TicketView {
   }
 
   allTickets(list) {
-    for(let index = 0; index < list.length; index++) {
-      this.table.innerHTML+=
-      `
+    for (let index = 0; index < list.length; index++) {
+      this.table.innerHTML += `
       <tr class ="table__row">
       <td class="id">${list[index].id}</td>
       <td class="status"><input type="checkbox" class="check"></td>
@@ -22,9 +21,9 @@ export default class TicketView {
       <td class="edit"><button type="button" class="edit__ticket">&#9998;</button></td>
       <td class="delete"><button type="button" class="delete__ticket">&#10005;</button></td>
       </tr>
-      `
-      const checkbox = document.getElementsByTagName('input');
-      for(let i = index; i < checkbox.length; i++) {
+      `;
+      const checkbox = document.getElementsByTagName("input");
+      for (let i = index; i < checkbox.length; i++) {
         if (list[i] !== undefined && list[i].status) {
           checkbox[i].setAttribute("checked", "checked");
         }
