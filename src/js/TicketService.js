@@ -2,13 +2,12 @@
  *  Класс для связи с сервером.
  *  Содержит методы для отправки запросов на сервер и получения ответов
  * */
-class TicketService {
+export default class TicketService {
   async list() {
     let url = 'http://localhost:7070?method=allTickets';
     let response = await fetch(url);
     if (response.ok) {
-      let tickets = await response.json();
-      console.log(tickets);
+      let tickets = response.json();
       return tickets;
     } else {
       console.log("Ошибка HTTP: " + response.status);
@@ -20,7 +19,6 @@ class TicketService {
     let response = await fetch(url);
     if (response.ok) {    
       let tickets = await response.json();
-      console.log(tickets);
       return tickets;
     } else {
       console.log("Ошибка HTTP: " + response.status);
@@ -34,12 +32,11 @@ class TicketService {
     });
     if (response.ok) {   
       let result = await response.json();
-      console.log(result);
       return result;
     } else {
       console.log("Ошибка HTTP: " + response.status);
     }
-};
+  };
 
   async update(data) {
     let url = `http://localhost:7070?method=updateById&${data}`;
@@ -48,7 +45,6 @@ class TicketService {
     });
     if (response.ok) {  
       let result = await response.json();
-      console.log(result);
       return result;
     } else {
       console.log("Ошибка HTTP: " + response.status);
@@ -57,13 +53,10 @@ class TicketService {
 
   async delete(id) {
     let url = `http://localhost:7070?method=deleteById&${id}`;
+    console.log(url);
     let response = await fetch(url, {
       method: 'DELETE',
     });
-    console.log(response.status);
-    return response.status;
+    return response;
   }
 }
-
-let ex = new TicketService();
-ex.list();
