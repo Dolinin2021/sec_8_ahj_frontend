@@ -40,26 +40,21 @@ import validate from "./validate";
         if (valid == false) {
           alert("Данные не прошли валидацию. \n Попробуйте ещё раз.");
           ticketForm.remove();
-          window.location.reload();
         } else if (valid == true) {
           await handleFormSubmit(e, service);
           ticketForm.remove();
-          window.location.reload();
         }
       } else if (e.target.className === "delete__record") {
         await deleteTicket(service, parent);
         ticketForm.remove();
-        window.location.reload();
       } else if (e.target.className === "redact") {
         let valid = validate(e);
         if (valid == false) {
           alert("Данные не прошли валидацию. \n Попробуйте ещё раз.");
           ticketForm.remove();
-          window.location.reload();
         } else if (valid == true) {
           await editFormProcess(e, service, ticketId);
           ticketForm.remove();
-          window.location.reload();
         }
       }
     });

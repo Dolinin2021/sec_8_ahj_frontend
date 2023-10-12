@@ -9,7 +9,6 @@ export default class TicketForm {
 
   create() {
     this.form.className = "createTicket";
-    this.form.method = "post";
     this.form.innerHTML = `
       <fieldset>
         <legend>Добавить тикет</legend>
@@ -31,7 +30,6 @@ export default class TicketForm {
 
   edit(response) {
     this.form.className = "editTicket";
-    this.form.method = "patch";
     this.form.innerHTML = `
       <fieldset>
         <legend>Изменить тикет</legend>
@@ -53,7 +51,6 @@ export default class TicketForm {
 
   delete() {
     this.form.className = "deleteTicket";
-    this.form.method = "delete";
     this.form.innerHTML = `
       <fieldset>
         <legend>Удалить тикет</legend>
