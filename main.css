@@ -1,0 +1,89 @@
+table {
+    position: relative;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td:first-child {
+    background: #AFCDE7;
+    color: white;
+    padding: 10px 20px;
+}
+
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+td {
+    background: #D8E6F3;
+    padding-right: 25px;
+}
+
+.id {
+    display: none;
+}
+
+body {  
+    color: #1e1f26;
+    font: 18px/1.5 sans-serif;
+}
+  
+form {
+    display: none;
+    width: 300px;
+    height: 300px;
+}
+  
+fieldset {
+    background-color: white;
+    width: 300px;
+    margin: 0 0 20px;
+    padding: 20px 15px;
+    border: 5px solid #ae63e4;
+    z-index: 999;
+}
+  
+button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: bold;
+    background: #47cf73;
+    cursor: pointer;
+}
+
+.text__description {
+    text-align: center;
+}
+
+input {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.add__ticket {
+    position: absolute;
+    top: -45px;
+    right: -1px;
+    z-index: 999;
+}
+
+.edit__ticket {
+    background-image: './svg/pencil.png';
+}
+
+.container {
+    position: absolute;
+    margin-top: 50px;
+}
+
+
+.hidden {
+    display:none;
+}
+
