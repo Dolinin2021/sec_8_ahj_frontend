@@ -41,11 +41,42 @@ import validate from "./validate";
           alert("Данные не прошли валидацию. \n Попробуйте ещё раз.");
           ticketForm.remove();
         } else if (valid == true) {
-          await handleFormSubmit(e, service);
+          let newTicket = await handleFormSubmit(e, service);
+          let elem = document.createElement("tr");
+          elem.className = "table__row";
+          const txt = `
+          <td class="id">${newTicket.id}</td>
+          <td class="status"><input type="checkbox" class="check"></td>
+          <td class="name">${newTicket.name}</td>
+          <td class="created">${newTicket.created}</td>
+          <td class="edit"><button type="button" class="edit__ticket">&#9998;</button></td>
+          <td class="delete"><button type="button" class="delete__ticket">&#10005;</button></td>
+          `;
+          elem.insertAdjacentHTML("beforeend", txt);
+          table.append(elem);
+          if (data.length === 0) {
+            container.style.position = "absolute";
+            container.style.marginTop = "50px";
+            addTicket.style.top = "-45px";
+            addTicket.style.right = "-1px";
+            addTicket.style.zIndex = "999";
+          }
           ticketForm.remove();
         }
       } else if (e.target.className === "delete__record") {
-        await deleteTicket(service, parent);
+        let result = await deleteTicket(service, parent);
+        if (result.status === 204) {
+          const list = service.list();
+          let data = await list;
+          table.innerHTML = "";
+          ticketView.allTickets(data);
+          if (data.length === 0) {
+            window.location.reload();
+          } else {
+            container.style.position = "absolute";
+            container.style.marginTop = "50px";
+          }
+        }
         ticketForm.remove();
       } else if (e.target.className === "redact") {
         let valid = validate(e);
@@ -53,7 +84,9 @@ import validate from "./validate";
           alert("Данные не прошли валидацию. \n Попробуйте ещё раз.");
           ticketForm.remove();
         } else if (valid == true) {
-          await editFormProcess(e, service, ticketId);
+          let editTicket = await editFormProcess(e, service, ticketId);
+          table.innerHTML = "";
+          ticketView.allTickets(editTicket);
           ticketForm.remove();
         }
       }
